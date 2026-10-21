@@ -1,0 +1,12 @@
+{
+  "name": "harness-photography",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Harness Photography — complete booking website and admin gallery",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs"
+  },
+  "engines": { "node": ">=20" }
+}
