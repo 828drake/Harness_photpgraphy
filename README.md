@@ -10,7 +10,7 @@ A complete four-page, responsive photography website. Built with **HTML, CSS and
 - **Contact:** owner email/phone/location/Instagram from your settings, working inquiry form, saved messages, and email notifications.
 - **Admin:** password-protected `/admin.html` to upload photographs, view and cancel bookings, read messages, and retry email notifications.
 
-Four original **AI-generated sample photos** are included to demonstrate the look. Replace/remove these from the admin dashboard with your own photography before public launch.
+The starter gallery now uses **real, publicly licensed sample photographs from Unsplash** (including landscape images). They load online from `images.unsplash.com`. These are **not photographs taken by Harness Photography** and should be replaced with your own portfolio work before representing the gallery as your work. See `PHOTO_CREDITS.md` for source information.
 
 ## Quick start (Windows)
 
@@ -76,7 +76,7 @@ Blank optional fields simply do not appear on the contact page. `TIME_ZONE` cont
 
 1. Visit `/admin.html` and sign in using `ADMIN_PASSWORD`.
 2. Choose **Your Photos**.
-3. Select a JPG, PNG, WebP or GIF under 8 MB, provide a title and category, and click **Publish Photo**.
+3. Select a JPG, PNG, WebP or GIF under 8 MB, provide a title and category (including **Landscapes**), and click **Publish Photo**.
 4. Check **Mark as a featured photograph** if you want it in the homepage slideshow.
 5. The photo is immediately visible on the public gallery. You can remove the sample images using **Remove Photo**.
 
@@ -121,7 +121,7 @@ Harness-Photography/
     admin.html               Private admin area
     styles.css               Responsive website styles
     js/                      Frontend JavaScript
-    assets/                  Starter photos + favicon
+    assets/                  Favicon (stock samples are served from Unsplash)
     uploads/                 Admin-uploaded photos (generated)
   data/                      Saved bookings, messages, gallery (generated)
 ```
@@ -133,3 +133,7 @@ Harness-Photography/
 - Upload a photo and verify it appears on `/gallery.html`; mark it featured to see it on the homepage.
 - Send a contact message and verify it appears under **Inquiries**.
 - Configure SMTP and check the email status in the admin dashboard, then run a real booking to verify delivery.
+
+### Updating the sample photos
+
+The default sample gallery is configured in `SEED_GALLERY` inside `server.mjs`, and the homepage's backup slideshow is configured in `public/index.html`. Stock images load from Unsplash's CDN and therefore require an internet connection. The gallery distinguishes starter examples from photos you upload yourself. To make your own photos appear in the slideshow, mark them **Featured** in the admin dashboard.
