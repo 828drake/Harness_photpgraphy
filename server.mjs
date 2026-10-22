@@ -42,16 +42,107 @@ const MIME = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
   '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif', '.svg': 'image/svg+xml', '.ico': 'image/x-icon',
 };
+const STOCK_GALLERY_VERSION = 2;
 const SEED_GALLERY = [
-  { id: 'sample-1', title: 'Where it all begins', category: 'couples', src: '/assets/couple.jpg', featured: true, sample: true },
-  { id: 'sample-2', title: 'Our favorite kind of chaos', category: 'families', src: '/assets/family.jpg', featured: true, sample: true },
-  { id: 'sample-3', title: 'A little golden light', category: 'portraits', src: '/assets/portrait.jpg', featured: true, sample: true },
-  { id: 'sample-4', title: 'The happiest chapter', category: 'celebrations', src: '/assets/wedding.jpg', featured: true, sample: true },
+  {
+    "id": "sample-1",
+    "title": "Together in the open air",
+    "category": "couples",
+    "src": "https://images.unsplash.com/photo-1721245445492-90e2274e8967?auto=format&fit=crop&w=1800&q=85",
+    "featured": true,
+    "sample": true
+  },
+  {
+    "id": "sample-2",
+    "title": "The people who matter most",
+    "category": "families",
+    "src": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1800&q=85",
+    "featured": true,
+    "sample": true
+  },
+  {
+    "id": "sample-3",
+    "title": "Golden-hour portrait",
+    "category": "portraits",
+    "src": "https://images.unsplash.com/photo-1631226159408-78741022f59b?auto=format&fit=crop&w=1500&q=85",
+    "featured": true,
+    "sample": true
+  },
+  {
+    "id": "sample-4",
+    "title": "A wedding to remember",
+    "category": "celebrations",
+    "src": "https://images.unsplash.com/photo-1543835380-c5c7bf5f4d82?auto=format&fit=crop&w=1800&q=85",
+    "featured": true,
+    "sample": true
+  },
+  {
+    "id": "stock-5",
+    "title": "Sunset over the mountains",
+    "category": "landscapes",
+    "src": "https://images.unsplash.com/photo-1518095957257-9acd026665c9?auto=format&fit=crop&w=2000&q=85",
+    "featured": true,
+    "sample": true
+  },
+  {
+    "id": "stock-6",
+    "title": "Reflection at the alpine lake",
+    "category": "landscapes",
+    "src": "https://images.unsplash.com/photo-1632335479115-1e3db2cdd262?auto=format&fit=crop&w=2000&q=85",
+    "featured": true,
+    "sample": true
+  },
+  {
+    "id": "stock-7",
+    "title": "Where cliffs meet the sea",
+    "category": "landscapes",
+    "src": "https://images.unsplash.com/photo-1685021412993-9ce67226bbeb?auto=format&fit=crop&w=2000&q=85",
+    "featured": true,
+    "sample": true
+  },
+  {
+    "id": "stock-8",
+    "title": "Layers of evening light",
+    "category": "landscapes",
+    "src": "https://images.unsplash.com/photo-1565768502425-079460b64877?auto=format&fit=crop&w=2000&q=85",
+    "featured": true,
+    "sample": true
+  },
+  {
+    "id": "stock-9",
+    "title": "Mountain waters",
+    "category": "landscapes",
+    "src": "https://images.unsplash.com/photo-1702360373582-968d932ac789?auto=format&fit=crop&w=2000&q=85",
+    "featured": false,
+    "sample": true
+  },
+  {
+    "id": "stock-10",
+    "title": "A moment in focus",
+    "category": "portraits",
+    "src": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1500&q=85",
+    "featured": false,
+    "sample": true
+  }
 ];
-const freshData = () => ({ gallery: structuredClone(SEED_GALLERY), bookings: [], messages: [] });
+const PHOTO_CATEGORIES = new Set([...Object.keys(SESSION_TYPES), 'landscapes']);
+const freshData = () => ({ gallery: structuredClone(SEED_GALLERY), stockGalleryVersion: STOCK_GALLERY_VERSION, bookings: [], messages: [] });
 let db;
 try { db = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8')); }
 catch { db = freshData(); saveDB(); }
+// Upgrade only starter examples; preserve client bookings, inquiries and owner uploads.
+// The version marker avoids re-adding photos removed by the admin on later restarts.
+if (db.stockGalleryVersion !== STOCK_GALLERY_VERSION) {
+  const hadOldSamples = Array.isArray(db.gallery) && db.gallery.some(photo => /^sample-[1-4]$/.test(photo.id) && photo.sample === true);
+  if (hadOldSamples) {
+    db.gallery = [
+      ...db.gallery.filter(photo => !(photo.sample === true && /^sample-[1-4]$/.test(photo.id))),
+      ...structuredClone(SEED_GALLERY),
+    ];
+  }
+  db.stockGalleryVersion = STOCK_GALLERY_VERSION;
+  saveDB();
+}
 function saveDB() {
   const temp = `${DATA_FILE}.${process.pid}.tmp`;
   fs.writeFileSync(temp, JSON.stringify(db, null, 2));
@@ -207,7 +298,7 @@ async function notifyAdmin(item, kind) {
 const SECURITY_HEADERS = {
   'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin',
   'X-Frame-Options': 'DENY',
-  'Content-Security-Policy': "default-src 'self'; img-src 'self' data: blob:; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'",
+  'Content-Security-Policy': "default-src 'self'; img-src 'self' https://images.unsplash.com data: blob:; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'",
 };
 async function handler(req, res) {
   Object.entries(SECURITY_HEADERS).forEach(([key, value]) => res.setHeader(key, value));
@@ -285,7 +376,7 @@ async function handler(req, res) {
       if (p === '/api/admin/gallery' && req.method === 'POST') {
         const b = await bodyJSON(req);
         const title = clean(b.title, 100), category = clean(b.category, 25);
-        if (title.length < 2 || !SESSION_TYPES[category]) return error(res, 400, 'Provide a title and valid category.');
+        if (title.length < 2 || !PHOTO_CATEGORIES.has(category)) return error(res, 400, 'Provide a title and valid category.');
         const match = /^data:image\/(jpeg|png|webp|gif);base64,([A-Za-z0-9+/=]+)$/.exec(b.image || '');
         if (!match) return error(res, 400, 'Upload a JPEG, PNG, WebP or GIF.');
         const buf = Buffer.from(match[2], 'base64');
