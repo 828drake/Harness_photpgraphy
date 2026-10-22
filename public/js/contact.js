@@ -1,10 +1,10 @@
 (async () => {
   const { api, alertBox } = window.HP;
+  const email = document.getElementById('contact-email');
+  email.textContent = 'mandydsh@sbcglobal.net';
+  email.href = 'mailto:mandydsh@sbcglobal.net';
   try {
     const config = await api('/api/config');
-    const email = document.getElementById('contact-email');
-    if (config.email && config.email !== 'hello@example.com') { email.textContent = config.email; email.href = `mailto:${config.email}`; }
-    else { email.textContent='Email address coming soon';email.removeAttribute('href'); }
     if (config.phone) {
       document.getElementById('phone-row').hidden = false;
       const link=document.getElementById('contact-phone');link.textContent=config.phone;link.href=`tel:${config.phone.replace(/[^\d+]/g,'')}`;
