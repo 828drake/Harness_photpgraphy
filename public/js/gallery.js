@@ -7,7 +7,7 @@
   const picture = document.getElementById('lightbox-image');
   const caption = document.getElementById('lightbox-caption');
   let photos = [], visible = [], activeIndex = 0;
-  const categories = {portraits:'Portraits',couples:'Couples',families:'Families',celebrations:'Celebrations'};
+  const categories = {portraits:'Portraits',couples:'Couples',families:'Families',celebrations:'Celebrations',landscapes:'Landscapes'};
   function open(index) { activeIndex = index; showPicture(); lightbox.hidden = false; document.body.style.overflow = 'hidden'; document.getElementById('lightbox-close').focus(); }
   function close() { lightbox.hidden = true; document.body.style.overflow = ''; }
   function showPicture() { const p=visible[activeIndex]; if (!p) return; picture.src=p.src;picture.alt=p.title;caption.textContent=p.title; }
@@ -27,7 +27,7 @@
       const img=document.createElement('img'); img.src=p.src;img.alt=p.title;img.loading=i<3?'eager':'lazy';
       const details=document.createElement('span');details.className='gallery-card-info';
       const nameWrap=document.createElement('span'),title=document.createElement('strong'),label=document.createElement('small');
-      title.textContent=p.title;label.textContent=categories[p.category]||'Photography';nameWrap.append(title,label);
+      title.textContent=p.title;label.textContent=(p.sample ? 'Sample · ' : '')+(categories[p.category]||'Photography');nameWrap.append(title,label);
       const magnify=document.createElement('span');magnify.className='gallery-zoom';magnify.textContent='↗';
       details.append(nameWrap,magnify);item.append(img,details);
       item.addEventListener('click',()=>open(i));grid.append(item);
