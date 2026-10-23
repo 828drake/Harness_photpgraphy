@@ -1,3 +1,4 @@
+/** Administrator login, gallery uploads, bookings, and customer messages. */
 (async () => {
   const {api, alertBox, esc, formatDate, formatTime} = window.HP;
   const loginView = document.getElementById('login-view');
@@ -7,6 +8,7 @@
   const uploadFile = document.getElementById('upload-file');
   let imageData = '';
 
+  // Login and dashboard loading
   function displayLoggedIn(isLoggedIn) { loginView.hidden = isLoggedIn; dashboard.hidden = !isLoggedIn; }
   async function refresh() {
     const [gallery, bookings, messages, user] = await Promise.all([
@@ -34,6 +36,7 @@
     document.querySelectorAll('.tab-panel').forEach(x=>x.hidden=x.id!==`${btn.dataset.tab}-panel`);
   }));
 
+  // Photo upload and preview
   uploadFile.addEventListener('change',()=>{
     const file=uploadFile.files[0];imageData='';
     const preview=document.getElementById('upload-preview');
@@ -56,6 +59,7 @@
     } catch(err){alertBox('upload-alert',err.message);}
     finally{submit.disabled=false;submit.innerHTML='PUBLISH PHOTO <span>↗</span>';}
   });
+  // Gallery management
   function renderGallery(items) {
     document.getElementById('admin-gallery-count').textContent=`(${items.length})`;
     const grid=document.getElementById('admin-photos');grid.replaceChildren();
@@ -70,6 +74,7 @@
       });grid.append(card);
     }
   }
+  // Bookings and inquiry management
   const bookingStatus = b=>b.status==='cancelled'?'<span class="admin-tag cancelled">Cancelled</span>':'<span class="admin-tag">Confirmed</span>';
   function renderBookings(items){
     const el=document.getElementById('admin-bookings');el.replaceChildren();
