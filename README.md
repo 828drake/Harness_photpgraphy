@@ -12,6 +12,19 @@ A complete four-page, responsive photography website. Built with **HTML, CSS and
 
 The starter gallery now uses **real, publicly licensed sample photographs from Unsplash** (including landscape images). They load online from `images.unsplash.com`. These are **not photographs taken by Harness Photography** and should be replaced with your own portfolio work before representing the gallery as your work. See `PHOTO_CREDITS.md` for source information.
 
+## Run directly from Microsoft Visual Studio
+
+**Visual Studio 2022 or 2026 (the full IDE, not VS Code)** can run this repository from the green **Start / F5** button.
+
+1. Install the **Node.js development** workload using **Visual Studio Installer**.
+2. Clone (or open) this GitHub repository in Visual Studio and select **Git > Pull**.
+3. Open **`HarnessPhotography.sln`** from **File > Open > Project/Solution**.
+4. Set the **Harness Photography** project as the startup project if needed.
+5. Copy `.env.example` to a private local `.env`, and set `ADMIN_PASSWORD` and `SESSION_SECRET`.
+6. Choose **Harness Photography — Start website and browser** in the debug dropdown and click the green **Start** arrow (F5). The site opens at **http://localhost:3000**.
+
+The project starts **`node server.mjs`** directly (no PowerShell `npm.ps1` issue). See **[VISUAL_STUDIO.md](VISUAL_STUDIO.md)** for troubleshooting and alternative configurations.
+
 ## Quick start (Windows)
 
 1. Install Node.js **20 or newer** from https://nodejs.org/ (if not already installed).
