@@ -3,3 +3,7 @@ node_modules/
 data/site.json
 public/uploads/*
 !public/uploads/.gitkeep
+.vs/
+**/obj/
+**/bin/
+*.suo
