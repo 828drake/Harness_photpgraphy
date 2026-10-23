@@ -1,3 +1,4 @@
+/** Homepage: rotating hero images, controls, and featured gallery photos. */
 (() => {
   const container = document.querySelector('.hero-slides');
   if (!container) return;
@@ -7,6 +8,7 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let current = 0;
   let timer;
+  // Control the visible image, manual arrows, and autoplay.
   const show = index => {
     if (!slides.length) return;
     current = (index + slides.length) % slides.length;
@@ -20,6 +22,7 @@
   document.addEventListener('visibilitychange', () => { clearInterval(timer); if (!document.hidden) start(); });
   start();
   // Featured photographs added by the admin automatically feed the home slideshow.
+  // Load featured gallery photos once the Node.js API is available.
   window.HP.api('/api/gallery').then(({ photos }) => {
     const featured = photos.filter(photo => photo.featured && typeof photo.src === 'string').slice(0, 8);
     if (!featured.length) return;
