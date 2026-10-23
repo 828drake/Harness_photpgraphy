@@ -5,6 +5,7 @@ import crypto from 'node:crypto';
 import net from 'node:net';
 import tls from 'node:tls';
 import { fileURLToPath } from 'node:url';
+import { execFile } from 'node:child_process';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC = path.join(ROOT, 'public');
@@ -422,6 +423,14 @@ async function handler(req, res) {
 const server = http.createServer(handler);
 server.listen(PORT, () => {
   console.log(`\nHARNESS PHOTOGRAPHY → http://localhost:${PORT}`);
+  // Visual Studio's one-click launch profile opens the default browser on Windows
+  // only after the HTTP server has successfully started. No effect on normal npm
+  // starts, production deployments, or the server-only debug profile.
+  if (env.HP_OPEN_BROWSER === '1' && process.platform === 'win32') {
+    execFile('cmd.exe', ['/d', '/c', `start "" "http://localhost:${PORT}"`], { windowsHide: true }, (error) => {
+      if (error) console.warn('Could not open browser automatically:', error.message);
+    });
+  }
   if (!ADMIN_PASSWORD || !env.SESSION_SECRET) console.log('ADMIN SETUP: Copy .env.example to .env and set ADMIN_PASSWORD + SESSION_SECRET.');
   if (!env.SMTP_HOST) console.log('EMAIL SETUP: Configure SMTP_* and MAIL_FROM in .env to send real notification emails.');
 });
