@@ -22,6 +22,21 @@
     },
     {
       "name": "Harness Photography — Start website and browser",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}/server.mjs",
+      "runtimeExecutable": "node",
+      "console": "integratedTerminal",
+      "env": {
+        "HP_OPEN_BROWSER": "1"
+      },
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "name": "Harness Photography — Debug Node and Edge",
       "configurations": [
         "Harness Photography — Node server",
         "Harness Photography — Website (Edge)"
