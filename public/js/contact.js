@@ -1,8 +1,10 @@
+/** Public contact information and contact-form submission. */
 (async () => {
   const { api, alertBox } = window.HP;
   const email = document.getElementById('contact-email');
   email.textContent = 'mandydsh@sbcglobal.net';
   email.href = 'mailto:mandydsh@sbcglobal.net';
+  // Load configured business contact details
   try {
     const config = await api('/api/config');
     if (config.phone) {
@@ -18,6 +20,7 @@
       link.href=`https://www.instagram.com/${encodeURIComponent(handle.replace(/\//g,''))}/`;
     }
   } catch { /* Form will display server errors if submitted. */ }
+  // Contact form submission
   const form=document.getElementById('contact-form'),submit=document.getElementById('contact-submit');
   form.addEventListener('submit',async e=>{
     e.preventDefault();if(!form.reportValidity())return;
