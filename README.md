@@ -12,6 +12,10 @@ A complete four-page, responsive photography website. Built with **HTML, CSS and
 
 The starter gallery now uses **real, publicly licensed sample photographs from Unsplash** (including landscape images). They load online from `images.unsplash.com`. These are **not photographs taken by Harness Photography** and should be replaced with your own portfolio work before representing the gallery as your work. See `PHOTO_CREDITS.md` for source information.
 
+## Source code and editing guide
+
+The HTML and CSS are formatted with clear indentation and organized by page or component. See **[CODE_GUIDE.md](CODE_GUIDE.md)** to find which file controls each part of the website, and **[.editorconfig](.editorconfig)** for the shared Visual Studio formatting settings.
+
 ## Run directly from Microsoft Visual Studio
 
 **Visual Studio 2022 or 2026 (the full IDE, not VS Code)** can run this repository from the green **Start / F5** button.
