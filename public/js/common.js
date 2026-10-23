@@ -1,7 +1,9 @@
+/** Shared navigation, API requests, alerts, and date/time utilities. */
 (() => {
   const header = document.getElementById('site-header');
   const nav = document.getElementById('main-nav');
   const toggle = document.querySelector('.menu-toggle');
+  // Responsive navigation
   if (toggle && nav) {
     const close = () => { nav.classList.remove('is-open'); toggle.classList.remove('is-open'); toggle.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open'); };
     toggle.addEventListener('click', () => {
@@ -17,6 +19,7 @@
     window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
   }
   document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
+  // JSON API requests and reusable interface utilities
   async function api(url, options = {}) {
     let response;
     try {
