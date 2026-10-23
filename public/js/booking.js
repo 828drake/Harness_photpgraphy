@@ -1,3 +1,4 @@
+/** Session selection, calendar rendering, time slots, and booking submission. */
 (async () => {
   const { api, alertBox, formatDate, formatTime } = window.HP;
   const daysEl = document.getElementById('calendar-days');
@@ -24,6 +25,7 @@
   const tz = config.timeZone.replace(/_/g, ' ').replace(/\//g, ' / ');
   document.getElementById('calendar-timezone').textContent = tz;
 
+  // Calendar date selection
   function calendar() {
     monthEl.textContent = displayed.toLocaleDateString('en-US',{month:'long',year:'numeric',timeZone:'UTC'});
     const firstDow = displayed.getUTCDay();
@@ -48,6 +50,7 @@
     prev.disabled = monthDelta <= 0;
     next.disabled = monthDelta >= 4;
   }
+  // Fetch and display available appointment times
   async function slots() {
     const serial = ++loadSerial;
     selectedTime = '';
@@ -82,6 +85,7 @@
     document.querySelectorAll('.session-option').forEach(option => option.classList.toggle('selected', option.contains(input) && input.checked));
     slots();
   }));
+  // Validate and submit a booking
   form.addEventListener('submit', async e => {
     e.preventDefault();
     if (!form.reportValidity()) return;
