@@ -1,3 +1,4 @@
+/** Gallery filters, accessible photo cards, and full-screen image viewer. */
 (async () => {
   const { api } = window.HP;
   const grid = document.getElementById('gallery-grid');
@@ -8,6 +9,7 @@
   const caption = document.getElementById('lightbox-caption');
   let photos = [], visible = [], activeIndex = 0;
   const categories = {portraits:'Portraits',couples:'Couples',families:'Families',celebrations:'Celebrations',landscapes:'Landscapes'};
+  // Full-screen gallery viewer
   function open(index) { activeIndex = index; showPicture(); lightbox.hidden = false; document.body.style.overflow = 'hidden'; document.getElementById('lightbox-close').focus(); }
   function close() { lightbox.hidden = true; document.body.style.overflow = ''; }
   function showPicture() { const p=visible[activeIndex]; if (!p) return; picture.src=p.src;picture.alt=p.title;caption.textContent=p.title; }
@@ -17,6 +19,7 @@
   document.getElementById('lightbox-next').addEventListener('click', () => move(1));
   lightbox.addEventListener('click',e=>{if(e.target===lightbox)close();});
   document.addEventListener('keydown',e=>{if(lightbox.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1);});
+  // Filter and render photo cards
   function render(category = 'all') {
     visible = category === 'all' ? photos : photos.filter(photo => photo.category === category);
     grid.replaceChildren(); count.textContent = `${visible.length} ${visible.length===1?'PHOTOGRAPH':'PHOTOGRAPHS'}`;
