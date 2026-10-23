@@ -12,13 +12,14 @@ This repository includes `HarnessPhotography.sln`, `HarnessPhotography.esproj`, 
 6. Create a local private `.env` file by copying `.env.example`. At minimum, set a strong `ADMIN_PASSWORD` and random `SESSION_SECRET`. Keep `.env` out of Git.
 7. In the debug dropdown, select **Harness Photography — Start website and browser**, then click the green **Start (F5)** button. This starts `node server.mjs` and opens Edge at `http://localhost:3000`.
 
-For a server-only launch, select **Harness Photography — Node server** and open `http://localhost:3000` manually. For a simpler run without debugging, use **Ctrl+F5**. The command defined in the project is **`node server.mjs`**, which avoids PowerShell's `npm.ps1` execution policy issue.
+For a server-only launch, select **Harness Photography — Node server** and open `http://localhost:3000` manually. To attach debuggers to both Node and Edge, choose **Harness Photography — Debug Node and Edge**. For a simpler run without debugging, use **Ctrl+F5**. The command defined in the project is **`node server.mjs`**, which avoids PowerShell's `npm.ps1` execution policy issue.
 
 ## Troubleshooting
 
 - If Visual Studio says the JavaScript project type isn't supported, use Visual Studio Installer to install **Node.js development**.
 - If `localhost:3000` is already in use, stop other Node processes started in previous terminal windows, or change `PORT` in your local `.env` and the browser URL in `.vscode/launch.json` to match.
-- If the browser starts before the server is ready, refresh the page.
+- The **Start website and browser** profile starts the server and opens the default Windows browser only after the server starts. If no browser opens, check the Output window for `Could not open browser automatically`, and check whether Windows has a default browser assigned.
+- The **Debug Node and Edge** compound profile can still launch Edge before the Node server is ready; refresh that browser window if needed.
 - If a green Start button or JavaScript debug profiles aren't available, reopen `HarnessPhotography.sln` (not only the folder), set the startup project, and confirm the Node.js workload is installed.
 - Booking notifications need valid SMTP settings in local `.env`. The frontend and Node.js server both run locally, but external visitors cannot access your localhost.
 - The site's upload and booking data are saved locally under `public/uploads` and `data/site.json` and won't automatically sync to Git.
