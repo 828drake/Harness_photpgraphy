@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Harness Photography — Node server",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}/server.mjs",
+      "runtimeExecutable": "node",
+      "console": "integratedTerminal",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "name": "Harness Photography — Website (Edge)",
+      "type": "edge",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/public"
+    },
+    {
+      "name": "Harness Photography — Start website and browser",
+      "configurations": [
+        "Harness Photography — Node server",
+        "Harness Photography — Website (Edge)"
+      ]
+    }
+  ]
+}
