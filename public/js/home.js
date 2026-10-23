@@ -15,15 +15,26 @@
     slides.forEach((slide, i) => slide.classList.toggle('is-active', i === current));
     counter.textContent = String(current + 1).padStart(2, '0');
   };
-  const start = () => { if (!reducedMotion && slides.length > 1) timer = setInterval(() => show(current + 1), 5500); };
-  const move = by => { clearInterval(timer); show(current + by); start(); };
+  const start = () => {
+    if (!reducedMotion && slides.length > 1) timer = setInterval(() => show(current + 1), 5500);
+  };
+  const move = by => {
+    clearInterval(timer);
+    show(current + by);
+    start();
+  };
   document.getElementById('hero-prev').addEventListener('click', () => move(-1));
   document.getElementById('hero-next').addEventListener('click', () => move(1));
-  document.addEventListener('visibilitychange', () => { clearInterval(timer); if (!document.hidden) start(); });
+  document.addEventListener('visibilitychange', () => {
+    clearInterval(timer);
+    if (!document.hidden) start();
+  });
   start();
   // Featured photographs added by the admin automatically feed the home slideshow.
   // Load featured gallery photos once the Node.js API is available.
-  window.HP.api('/api/gallery').then(({ photos }) => {
+  window.HP.api('/api/gallery').then(({
+    photos
+  }) => {
     const featured = photos.filter(photo => photo.featured && typeof photo.src === 'string').slice(0, 8);
     if (!featured.length) return;
     clearInterval(timer);
@@ -35,7 +46,11 @@
       container.append(slide);
       return slide;
     });
-    current = 0; counter.textContent = '01'; total.textContent = String(slides.length).padStart(2, '0');
+    current = 0;
+    counter.textContent = '01';
+    total.textContent = String(slides.length).padStart(2, '0');
     start();
-  }).catch(() => { /* Static starter photos are the fallback. */ });
+  }).catch(() => {
+    /* Static starter photos are the fallback. */
+  });
 })();
