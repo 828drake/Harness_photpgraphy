@@ -1,19 +1,31 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><meta name="theme-color" content="#f4f0e9"><meta name="description" content="Explore the Harness Photography portfolio—portraits, couples, families and heartfelt celebrations."><title>The Gallery | Harness Photography</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css">
-    <script src="/js/common.js" defer>
-    </script>
-    <script src="/js/gallery.js" defer>
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <meta name="theme-color" content="#f4f0e9">
+    <meta name="description" content="Explore the Harness Photography portfolio—portraits, couples, families and heartfelt celebrations.">
+    <title>The Gallery | Harness Photography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/js/common.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
   </head>
   <body>
     <header class="site-header" id="site-header">
       <a class="brand" href="/" aria-label="Harness Photography home"><span class="brand-symbol" aria-hidden="true"><span></span></span><span>Harness<span class="brand-subtitle">PHOTOGRAPHY</span></span></a>
       <nav class="main-nav" id="main-nav" aria-label="Main navigation">
-        <a class="nav-link" href="/">Home</a><a class="nav-link" href="/booking.html">Book a session</a><a class="nav-link active" href="/gallery.html">Gallery</a><a class="nav-link" href="/contact.html">Contact</a><a class="nav-mobile-book" href="/booking.html">Let's make memories ↗</a>
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/booking.html">Book a session</a>
+        <a class="nav-link active" href="/gallery.html">Gallery</a>
+        <a class="nav-link" href="/contact.html">Contact</a>
+        <a class="nav-mobile-book" href="/booking.html">Let's make memories ↗</a>
       </nav>
-      <a class="nav-cta" href="/booking.html">LET'S CONNECT <span>↗</span></a><button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button>
+      <a class="nav-cta" href="/booking.html">LET'S CONNECT <span>↗</span></a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button>
     </header>
     <main>
       <section class="gallery-intro container">
@@ -35,7 +47,12 @@
       <section class="gallery-section container">
         <div class="gallery-filter-wrap">
           <div class="filter-group" role="group" aria-label="Filter photographs">
-            <button type="button" class="filter-button is-active" data-filter="all">All stories</button><button type="button" class="filter-button" data-filter="portraits">Portraits</button><button type="button" class="filter-button" data-filter="couples">Couples</button><button type="button" class="filter-button" data-filter="families">Families</button><button type="button" class="filter-button" data-filter="celebrations">Celebrations</button><button type="button" class="filter-button" data-filter="landscapes">Landscapes</button>
+            <button type="button" class="filter-button is-active" data-filter="all">All stories</button>
+            <button type="button" class="filter-button" data-filter="portraits">Portraits</button>
+            <button type="button" class="filter-button" data-filter="couples">Couples</button>
+            <button type="button" class="filter-button" data-filter="families">Families</button>
+            <button type="button" class="filter-button" data-filter="celebrations">Celebrations</button>
+            <button type="button" class="filter-button" data-filter="landscapes">Landscapes</button>
           </div>
           <span id="gallery-count">THE COLLECTION</span>
         </div>
@@ -61,7 +78,8 @@
       </section>
     </main>
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
-      <button class="lightbox-close" id="lightbox-close" aria-label="Close photo">×</button><button class="lightbox-arrow lightbox-prev" id="lightbox-prev" aria-label="Previous photo">←</button>
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close photo">×</button>
+      <button class="lightbox-arrow lightbox-prev" id="lightbox-prev" aria-label="Previous photo">←</button>
       <figure class="lightbox-content">
         <img id="lightbox-image" alt=""><figcaption id="lightbox-caption"></figcaption>
       </figure>
@@ -74,7 +92,10 @@
           For all the moments you want to keep.
         </p>
         <div class="footer-links">
-          <a href="/booking.html">Bookings</a><a href="/gallery.html">Gallery</a><a href="/contact.html">Contact</a><a href="/admin.html">Admin</a>
+          <a href="/booking.html">Bookings</a>
+          <a href="/gallery.html">Gallery</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/admin.html">Admin</a>
         </div>
       </div>
       <div class="container footer-bottom">
