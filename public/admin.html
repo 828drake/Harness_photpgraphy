@@ -1,9 +1,140 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><meta name="theme-color" content="#f4f0e9"><meta name="robots" content="noindex,nofollow"><title>Admin Dashboard | Harness Photography</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><script src="/js/common.js" defer></script><script src="/js/admin.js" defer></script></head><body class="admin-page">
-<header class="site-header" id="site-header"><a class="brand" href="/" aria-label="Harness Photography home"><span class="brand-symbol" aria-hidden="true"><span></span></span><span>Harness<span class="brand-subtitle">PHOTOGRAPHY</span></span></a><nav class="main-nav" id="main-nav" aria-label="Main navigation"><a class="nav-link" href="/">Home</a><a class="nav-link" href="/booking.html">Book a session</a><a class="nav-link" href="/gallery.html">Gallery</a><a class="nav-link" href="/contact.html">Contact</a></nav><a class="nav-cta" href="/">BACK TO WEBSITE <span>↗</span></a><button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button></header>
-<main class="admin-main container"><section id="login-view" class="login-view"><div class="login-ornament">✳</div><p class="eyebrow accent">OWNER ACCESS ONLY</p><h1>Welcome <em>back.</em></h1><p>Sign in to manage your photos, bookings and inquiries.</p><form id="login-form"><div class="field"><label for="admin-password">ADMIN PASSWORD</label><input type="password" id="admin-password" name="password" placeholder="Enter your admin password" required autocomplete="current-password"></div><div class="form-alert" role="status" id="login-alert" hidden></div><button class="button button--dark submit-button" type="submit">SIGN IN <span>↗</span></button></form></section>
-<section id="dashboard-view" hidden><div class="admin-heading"><div><p class="eyebrow accent">YOUR CREATIVE SPACE</p><h1>The <em>dashboard.</em></h1><p>Keep your gallery fresh and your calendar organized.</p></div><button class="button button--outline" id="logout-button">LOG OUT ↗</button></div><div class="admin-status" id="email-status"></div><div class="admin-tabs" role="tablist" aria-label="Dashboard sections"><button type="button" class="admin-tab active" data-tab="photos">YOUR PHOTOS</button><button type="button" class="admin-tab" data-tab="bookings">SESSION BOOKINGS</button><button type="button" class="admin-tab" data-tab="messages">INQUIRIES</button></div>
-<div class="tab-panel" id="photos-panel"><div class="admin-panel-title"><div><h2>Gallery management</h2><p>Upload photos to make them appear on your public gallery.</p></div></div><div class="admin-photo-layout"><form id="upload-form" class="upload-form"><h3>Add a new photograph</h3><div class="upload-dropzone" id="upload-dropzone"><input type="file" id="upload-file" accept="image/jpeg,image/png,image/webp,image/gif" required><div id="upload-placeholder"><span class="upload-icon">↥</span><strong>Click to select your image</strong><small>JPG, PNG, WebP or GIF · Up to 8 MB</small></div><img id="upload-preview" alt="New photo preview" hidden></div><div class="field"><label for="upload-title">PHOTO TITLE</label><input id="upload-title" required maxlength="100" placeholder="e.g. An afternoon in June"></div><div class="field"><label for="upload-category">CATEGORY</label><select id="upload-category" required><option value="portraits">Portraits</option><option value="couples">Couples</option><option value="families">Families</option><option value="celebrations">Celebrations</option><option value="landscapes">Landscapes</option></select></div><label class="check-label"><input type="checkbox" id="upload-featured" checked> Mark as a featured photograph</label><div class="form-alert" id="upload-alert" role="status" hidden></div><button class="button button--dark submit-button" type="submit" id="upload-submit">PUBLISH PHOTO <span>↗</span></button></form><div class="admin-current"><h3>Your gallery <span id="admin-gallery-count"></span></h3><div class="admin-photo-grid" id="admin-photos"></div></div></div></div>
-<div class="tab-panel" id="bookings-panel" hidden><div class="admin-panel-title"><div><h2>Upcoming & past sessions</h2><p>All session reservations from your website.</p></div></div><div class="admin-booking-list" id="admin-bookings"></div></div>
-<div class="tab-panel" id="messages-panel" hidden><div class="admin-panel-title"><div><h2>Messages & inquiries</h2><p>Every note sent through the contact form.</p></div></div><div class="admin-booking-list" id="admin-messages"></div></div>
-</section></main>
-<footer class="site-footer"><div class="container footer-bottom"><span>© <span data-year></span> HARNESS PHOTOGRAPHY</span><span>ADMIN STUDIO</span></div></footer></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><meta name="theme-color" content="#f4f0e9"><meta name="robots" content="noindex,nofollow"><title>Admin Dashboard | Harness Photography</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css">
+    <script src="/js/common.js" defer>
+    </script>
+    <script src="/js/admin.js" defer>
+    </script>
+  </head>
+  <body class="admin-page">
+    <header class="site-header" id="site-header">
+      <a class="brand" href="/" aria-label="Harness Photography home"><span class="brand-symbol" aria-hidden="true"><span></span></span><span>Harness<span class="brand-subtitle">PHOTOGRAPHY</span></span></a>
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <a class="nav-link" href="/">Home</a><a class="nav-link" href="/booking.html">Book a session</a><a class="nav-link" href="/gallery.html">Gallery</a><a class="nav-link" href="/contact.html">Contact</a>
+      </nav>
+      <a class="nav-cta" href="/">BACK TO WEBSITE <span>↗</span></a><button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button>
+    </header>
+    <main class="admin-main container">
+      <section id="login-view" class="login-view">
+        <div class="login-ornament">
+          ✳
+        </div>
+        <p class="eyebrow accent">
+          OWNER ACCESS ONLY
+        </p>
+        <h1>
+          Welcome <em>back.</em>
+        </h1>
+        <p>
+          Sign in to manage your photos, bookings and inquiries.
+        </p>
+        <form id="login-form">
+          <div class="field">
+            <label for="admin-password">ADMIN PASSWORD</label><input type="password" id="admin-password" name="password" placeholder="Enter your admin password" required autocomplete="current-password">
+          </div>
+          <div class="form-alert" role="status" id="login-alert" hidden>
+          </div>
+          <button class="button button--dark submit-button" type="submit">SIGN IN <span>↗</span></button>
+        </form>
+      </section>
+      <section id="dashboard-view" hidden>
+        <div class="admin-heading">
+          <div>
+            <p class="eyebrow accent">
+              YOUR CREATIVE SPACE
+            </p>
+            <h1>
+              The <em>dashboard.</em>
+            </h1>
+            <p>
+              Keep your gallery fresh and your calendar organized.
+            </p>
+          </div>
+          <button class="button button--outline" id="logout-button">LOG OUT ↗</button>
+        </div>
+        <div class="admin-status" id="email-status">
+        </div>
+        <div class="admin-tabs" role="tablist" aria-label="Dashboard sections">
+          <button type="button" class="admin-tab active" data-tab="photos">YOUR PHOTOS</button><button type="button" class="admin-tab" data-tab="bookings">SESSION BOOKINGS</button><button type="button" class="admin-tab" data-tab="messages">INQUIRIES</button>
+        </div>
+        <div class="tab-panel" id="photos-panel">
+          <div class="admin-panel-title">
+            <div>
+              <h2>
+                Gallery management
+              </h2>
+              <p>
+                Upload photos to make them appear on your public gallery.
+              </p>
+            </div>
+          </div>
+          <div class="admin-photo-layout">
+            <form id="upload-form" class="upload-form">
+              <h3>
+                Add a new photograph
+              </h3>
+              <div class="upload-dropzone" id="upload-dropzone">
+                <input type="file" id="upload-file" accept="image/jpeg,image/png,image/webp,image/gif" required>
+                <div id="upload-placeholder">
+                  <span class="upload-icon">↥</span><strong>Click to select your image</strong><small>JPG, PNG, WebP or GIF · Up to 8 MB</small>
+                </div>
+                <img id="upload-preview" alt="New photo preview" hidden>
+              </div>
+              <div class="field">
+                <label for="upload-title">PHOTO TITLE</label><input id="upload-title" required maxlength="100" placeholder="e.g. An afternoon in June">
+              </div>
+              <div class="field">
+                <label for="upload-category">CATEGORY</label><select id="upload-category" required><option value="portraits">Portraits</option><option value="couples">Couples</option><option value="families">Families</option><option value="celebrations">Celebrations</option><option value="landscapes">Landscapes</option></select>
+              </div>
+              <label class="check-label"><input type="checkbox" id="upload-featured" checked> Mark as a featured photograph</label>
+              <div class="form-alert" id="upload-alert" role="status" hidden>
+              </div>
+              <button class="button button--dark submit-button" type="submit" id="upload-submit">PUBLISH PHOTO <span>↗</span></button>
+            </form>
+            <div class="admin-current">
+              <h3>
+                Your gallery <span id="admin-gallery-count"></span>
+              </h3>
+              <div class="admin-photo-grid" id="admin-photos">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-panel" id="bookings-panel" hidden>
+          <div class="admin-panel-title">
+            <div>
+              <h2>
+                Upcoming & past sessions
+              </h2>
+              <p>
+                All session reservations from your website.
+              </p>
+            </div>
+          </div>
+          <div class="admin-booking-list" id="admin-bookings">
+          </div>
+        </div>
+        <div class="tab-panel" id="messages-panel" hidden>
+          <div class="admin-panel-title">
+            <div>
+              <h2>
+                Messages & inquiries
+              </h2>
+              <p>
+                Every note sent through the contact form.
+              </p>
+            </div>
+          </div>
+          <div class="admin-booking-list" id="admin-messages">
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-bottom">
+        <span>© <span data-year></span> HARNESS PHOTOGRAPHY</span><span>ADMIN STUDIO</span>
+      </div>
+    </footer>
+  </body>
+</html>
