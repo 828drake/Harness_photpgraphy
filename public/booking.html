@@ -1,21 +1,161 @@
-<!doctype html><html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><meta name="theme-color" content="#f4f0e9">
-<meta name="description" content="Book a photography session with Harness Photography. Choose your session, date, and available time on our live calendar.">
-<title>Book a Session | Harness Photography</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css"><script src="/js/common.js" defer></script><script src="/js/booking.js" defer></script>
-</head><body>
-<header class="site-header" id="site-header"><a class="brand" href="/" aria-label="Harness Photography home"><span class="brand-symbol" aria-hidden="true"><span></span></span><span>Harness<span class="brand-subtitle">PHOTOGRAPHY</span></span></a><nav class="main-nav" id="main-nav" aria-label="Main navigation"><a class="nav-link" href="/">Home</a><a class="nav-link active" href="/booking.html">Book a session</a><a class="nav-link" href="/gallery.html">Gallery</a><a class="nav-link" href="/contact.html">Contact</a><a class="nav-mobile-book" href="/booking.html">Let's make memories ↗</a></nav><a class="nav-cta" href="/contact.html">GET IN TOUCH <span>↗</span></a><button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button></header>
-<main><section class="inner-heading container"><div><p class="eyebrow accent">YOUR STORY, YOUR SESSION</p><h1>Let's make it <em>official.</em></h1></div><p>Pick your kind of magic, find a day that works, and I'll take it from there. I can't wait to create with you.</p></section>
-<section class="booking-section container"><div class="booking-layout">
-  <div class="booking-left"><div class="booking-panel-heading"><span class="number-pill">01</span><div><h2>Choose your session</h2><p>Every story is a little different.</p></div></div>
-    <div class="session-picker" id="session-picker"><label class="session-option selected"><input type="radio" name="session" value="portraits" checked><span class="session-radio"></span><span class="session-details"><strong>Portraits</strong><small>Just you, your story, your light.</small></span></label><label class="session-option"><input type="radio" name="session" value="couples"><span class="session-radio"></span><span class="session-details"><strong>Couples & Engagements</strong><small>For all the love you share.</small></span></label><label class="session-option"><input type="radio" name="session" value="families"><span class="session-radio"></span><span class="session-details"><strong>Families</strong><small>The little moments, held forever.</small></span></label><label class="session-option"><input type="radio" name="session" value="celebrations"><span class="session-radio"></span><span class="session-details"><strong>Celebrations & Events</strong><small>A chapter worth remembering.</small></span></label></div>
-    <div class="booking-panel-heading calendar-heading"><span class="number-pill">02</span><div><h2>Pick a date & time</h2><p>Available sessions are shown below.</p></div></div>
-    <div class="calendar-card"><div class="calendar-toolbar"><div><strong id="calendar-month">October 2026</strong><span class="calendar-timezone" id="calendar-timezone">Eastern Time</span></div><div class="calendar-navigation"><button type="button" id="calendar-prev" aria-label="Previous month">←</button><button type="button" id="calendar-next" aria-label="Next month">→</button></div></div><div class="calendar-weekdays"><span>SU</span><span>MO</span><span>TU</span><span>WE</span><span>TH</span><span>FR</span><span>SA</span></div><div class="calendar-days" id="calendar-days" role="group" aria-label="Choose a date"></div><div class="calendar-legend"><span><i class="legend-dot legend-dot--available"></i> Available</span><span><i class="legend-dot legend-dot--selected"></i> Selected</span><span><i class="legend-dot legend-dot--unavailable"></i> Unavailable</span></div></div>
-    <div class="times-wrap"><div class="times-title"><strong>Available times</strong><small id="selected-day-label">Choose a date on the calendar</small></div><div class="times-grid" id="times-grid"><p class="empty-times">Select a date to see available times.</p></div></div>
-  </div>
-  <div class="booking-right"><div class="details-card"><div class="booking-panel-heading"><span class="number-pill">03</span><div><h2>A little about you</h2><p>The details that make it yours.</p></div></div><form id="booking-form" novalidate><div class="form-grid"><div class="field"><label for="book-name">FULL NAME <span>*</span></label><input id="book-name" name="name" type="text" placeholder="Your full name" autocomplete="name" required maxlength="100"></div><div class="field"><label for="book-email">EMAIL ADDRESS <span>*</span></label><input id="book-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required></div><div class="field"><label for="book-phone">PHONE NUMBER <span>*</span></label><input id="book-phone" name="phone" type="tel" placeholder="(555) 000-0000" autocomplete="tel" required></div><div class="field"><label for="book-summary-date">SESSION DATE & TIME</label><input id="book-summary-date" type="text" value="Choose a date & time" disabled></div></div><div class="field"><label for="book-notes">TELL ME A LITTLE ABOUT YOUR VISION <span class="optional">(OPTIONAL)</span></label><textarea id="book-notes" name="notes" rows="5" maxlength="1200" placeholder="The occasion, your ideas, your favorite kind of moments..."></textarea></div><div class="honeypot" aria-hidden="true"><label for="book-website">Website</label><input type="text" id="book-website" name="website" tabindex="-1" autocomplete="off"></div><p class="form-hint">Your date is reserved when you submit. We'll be in touch to discuss the details.</p><div class="form-alert" id="booking-alert" role="status" aria-live="polite" hidden></div><button class="button button--dark submit-button" type="submit" id="booking-submit">CONFIRM MY SESSION <span>↗</span></button></form></div><div class="booking-note"><span class="note-icon">✳</span><p><strong>Good things take a little planning.</strong><br>Bookings open from 2 days to 4 months ahead. Need something sooner or something special? <a href="/contact.html">Just reach out.</a></p></div></div>
-</div></section>
-<section class="small-cta"><div class="container small-cta-inner"><span>HAVE A QUESTION BEFORE BOOKING?</span><a href="/contact.html">LET'S TALK IT THROUGH <span>↗</span></a></div></section>
-</main><footer class="site-footer"><div class="container footer-top"><a class="brand brand--footer" href="/"><span class="brand-symbol" aria-hidden="true"><span></span></span><span>Harness<span class="brand-subtitle">PHOTOGRAPHY</span></span></a><p>For all the moments you want to keep.</p><div class="footer-links"><a href="/booking.html">Bookings</a><a href="/gallery.html">Gallery</a><a href="/contact.html">Contact</a><a href="/admin.html">Admin</a></div></div><div class="container footer-bottom"><span>© <span data-year></span> HARNESS PHOTOGRAPHY</span><span>MADE WITH HEART & GOOD LIGHT.</span></div></footer>
-</body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><meta name="theme-color" content="#f4f0e9"><meta name="description" content="Book a photography session with Harness Photography. Choose your session, date, and available time on our live calendar."><title>Book a Session | Harness Photography</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css">
+    <script src="/js/common.js" defer>
+    </script>
+    <script src="/js/booking.js" defer>
+    </script>
+  </head>
+  <body>
+    <header class="site-header" id="site-header">
+      <a class="brand" href="/" aria-label="Harness Photography home"><span class="brand-symbol" aria-hidden="true"><span></span></span><span>Harness<span class="brand-subtitle">PHOTOGRAPHY</span></span></a>
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <a class="nav-link" href="/">Home</a><a class="nav-link active" href="/booking.html">Book a session</a><a class="nav-link" href="/gallery.html">Gallery</a><a class="nav-link" href="/contact.html">Contact</a><a class="nav-mobile-book" href="/booking.html">Let's make memories ↗</a>
+      </nav>
+      <a class="nav-cta" href="/contact.html">GET IN TOUCH <span>↗</span></a><button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button>
+    </header>
+    <main>
+      <section class="inner-heading container">
+        <div>
+          <p class="eyebrow accent">
+            YOUR STORY, YOUR SESSION
+          </p>
+          <h1>
+            Let's make it <em>official.</em>
+          </h1>
+        </div>
+        <p>
+          Pick your kind of magic, find a day that works, and I'll take it from there. I can't wait to create with you.
+        </p>
+      </section>
+      <section class="booking-section container">
+        <div class="booking-layout">
+          <div class="booking-left">
+            <div class="booking-panel-heading">
+              <span class="number-pill">01</span>
+              <div>
+                <h2>
+                  Choose your session
+                </h2>
+                <p>
+                  Every story is a little different.
+                </p>
+              </div>
+            </div>
+            <div class="session-picker" id="session-picker">
+              <label class="session-option selected"><input type="radio" name="session" value="portraits" checked><span class="session-radio"></span><span class="session-details"><strong>Portraits</strong><small>Just you, your story, your light.</small></span></label><label class="session-option"><input type="radio" name="session" value="couples"><span class="session-radio"></span><span class="session-details"><strong>Couples & Engagements</strong><small>For all the love you share.</small></span></label><label class="session-option"><input type="radio" name="session" value="families"><span class="session-radio"></span><span class="session-details"><strong>Families</strong><small>The little moments, held forever.</small></span></label><label class="session-option"><input type="radio" name="session" value="celebrations"><span class="session-radio"></span><span class="session-details"><strong>Celebrations & Events</strong><small>A chapter worth remembering.</small></span></label>
+            </div>
+            <div class="booking-panel-heading calendar-heading">
+              <span class="number-pill">02</span>
+              <div>
+                <h2>
+                  Pick a date & time
+                </h2>
+                <p>
+                  Available sessions are shown below.
+                </p>
+              </div>
+            </div>
+            <div class="calendar-card">
+              <div class="calendar-toolbar">
+                <div>
+                  <strong id="calendar-month">October 2026</strong><span class="calendar-timezone" id="calendar-timezone">Eastern Time</span>
+                </div>
+                <div class="calendar-navigation">
+                  <button type="button" id="calendar-prev" aria-label="Previous month">←</button><button type="button" id="calendar-next" aria-label="Next month">→</button>
+                </div>
+              </div>
+              <div class="calendar-weekdays">
+                <span>SU</span><span>MO</span><span>TU</span><span>WE</span><span>TH</span><span>FR</span><span>SA</span>
+              </div>
+              <div class="calendar-days" id="calendar-days" role="group" aria-label="Choose a date">
+              </div>
+              <div class="calendar-legend">
+                <span><i class="legend-dot legend-dot--available"></i> Available</span><span><i class="legend-dot legend-dot--selected"></i> Selected</span><span><i class="legend-dot legend-dot--unavailable"></i> Unavailable</span>
+              </div>
+            </div>
+            <div class="times-wrap">
+              <div class="times-title">
+                <strong>Available times</strong><small id="selected-day-label">Choose a date on the calendar</small>
+              </div>
+              <div class="times-grid" id="times-grid">
+                <p class="empty-times">
+                  Select a date to see available times.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="booking-right">
+            <div class="details-card">
+              <div class="booking-panel-heading">
+                <span class="number-pill">03</span>
+                <div>
+                  <h2>
+                    A little about you
+                  </h2>
+                  <p>
+                    The details that make it yours.
+                  </p>
+                </div>
+              </div>
+              <form id="booking-form" novalidate>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="book-name">FULL NAME <span>*</span></label><input id="book-name" name="name" type="text" placeholder="Your full name" autocomplete="name" required maxlength="100">
+                  </div>
+                  <div class="field">
+                    <label for="book-email">EMAIL ADDRESS <span>*</span></label><input id="book-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+                  </div>
+                  <div class="field">
+                    <label for="book-phone">PHONE NUMBER <span>*</span></label><input id="book-phone" name="phone" type="tel" placeholder="(555) 000-0000" autocomplete="tel" required>
+                  </div>
+                  <div class="field">
+                    <label for="book-summary-date">SESSION DATE & TIME</label><input id="book-summary-date" type="text" value="Choose a date & time" disabled>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="book-notes">TELL ME A LITTLE ABOUT YOUR VISION <span class="optional">(OPTIONAL)</span></label><textarea id="book-notes" name="notes" rows="5" maxlength="1200" placeholder="The occasion, your ideas, your favorite kind of moments..."></textarea>
+                </div>
+                <div class="honeypot" aria-hidden="true">
+                  <label for="book-website">Website</label><input type="text" id="book-website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+                <p class="form-hint">
+                  Your date is reserved when you submit. We'll be in touch to discuss the details.
+                </p>
+                <div class="form-alert" id="booking-alert" role="status" aria-live="polite" hidden>
+                </div>
+                <button class="button button--dark submit-button" type="submit" id="booking-submit">CONFIRM MY SESSION <span>↗</span></button>
+              </form>
+            </div>
+            <div class="booking-note">
+              <span class="note-icon">✳</span>
+              <p>
+                <strong>Good things take a little planning.</strong><br>Bookings open from 2 days to 4 months ahead. Need something sooner or something special? <a href="/contact.html">Just reach out.</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="small-cta">
+        <div class="container small-cta-inner">
+          <span>HAVE A QUESTION BEFORE BOOKING?</span><a href="/contact.html">LET'S TALK IT THROUGH <span>↗</span></a>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <a class="brand brand--footer" href="/"><span class="brand-symbol" aria-hidden="true"><span></span></span><span>Harness<span class="brand-subtitle">PHOTOGRAPHY</span></span></a>
+        <p>
+          For all the moments you want to keep.
+        </p>
+        <div class="footer-links">
+          <a href="/booking.html">Bookings</a><a href="/gallery.html">Gallery</a><a href="/contact.html">Contact</a><a href="/admin.html">Admin</a>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© <span data-year></span> HARNESS PHOTOGRAPHY</span><span>MADE WITH HEART & GOOD LIGHT.</span>
+      </div>
+    </footer>
+  </body>
+</html>
